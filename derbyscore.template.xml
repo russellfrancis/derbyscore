@@ -1,0 +1,272 @@
+<project>
+    <shortName>derbyscore</shortName>
+    <fullName>Derby Score</fullName>
+    <version>@VERSION@</version>
+    <licenseFile>src/derbyscore/resources/license.txt</licenseFile>
+    <leftImage>src/derbyscore/resources/gfx/installer-side-panel.png</leftImage>
+    <logoImage>src/derbyscore/resources/gfx/skate_64x64.png</logoImage>
+    <splashImage>web/gfx/derbyscore_logo.png</splashImage>
+    <preInstallationActionList>
+        <autodetectJava>
+            <progressText>Detecting existing Java installations.</progressText>
+            <promptUser>1</promptUser>
+            <onErrorActionList>
+                <showQuestion>
+                    <default>yes</default>
+                    <ruleEvaluationLogic>or</ruleEvaluationLogic>
+                    <text>We were unable to detect a version of Java which is capable of running DerbyScore.  Would you like to download a suitable Java runtime environment now?</text>
+                    <variable>user_download_java</variable>
+                    <ruleList>
+                        <platformTest>
+                            <type>linux</type>
+                        </platformTest>
+                        <platformTest>
+                            <type>windows</type>
+                        </platformTest>
+                    </ruleList>
+                </showQuestion>
+                <launchBrowser>
+                    <url>http://www.java.com/</url>
+                    <ruleList>
+                        <isTrue>
+                            <value>${user_download_java}</value>
+                        </isTrue>
+                    </ruleList>
+                </launchBrowser>
+                <showInfo>
+                    <text>You may download and install the Java runtime for your computer. from the website which is opened in your browser. Once this step has been completed, please retry the installation again.</text>
+                    <ruleList>
+                        <isTrue>
+                            <value>${user_download_java}</value>
+                        </isTrue>
+                    </ruleList>
+                </showInfo>
+                <showWarning>
+                    <text>We were unable to locate Java runtime environment 6.0 or greater for your computer.  Please install Java and then attempt this installation again.</text>
+                    <ruleList>
+                        <isFalse>
+                            <value>${user_download_java}</value>
+                        </isFalse>
+                    </ruleList>
+                </showWarning>
+            </onErrorActionList>
+            <validVersionList>
+                <validVersion>
+                    <maxVersion></maxVersion>
+                    <minVersion>1.6.0</minVersion>
+                    <requireJDK>0</requireJDK>
+                    <vendor></vendor>
+                </validVersion>
+            </validVersionList>
+        </autodetectJava>
+    </preInstallationActionList>
+    <compressionAlgorithm>lzma</compressionAlgorithm>
+    <enableRollback>1</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <saveRelativePaths>1</saveRelativePaths>
+    <vendor>Liquid Atom LLC</vendor>
+    <componentList>
+        <component>
+            <name>default</name>
+            <description>Default Component</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <desktopShortcutList>
+                <shortcut>
+                    <comment>DerbyScore ${product_version}</comment>
+                    <exec>${java_executable} "-Dproject.version=${project.version}" -jar derbyscore.jar</exec>
+                    <icon>${installdir}/gfx/skate.png</icon>
+                    <name>${product_fullname} ${product_version}</name>
+                    <path>${installdir}/bin</path>
+                    <platforms>all</platforms>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${javaw_executable}</windowsExec>
+                    <windowsExecArgs>"-Dproject.version=${project_version}" -jar derbyscore.jar</windowsExecArgs>
+                    <windowsIcon>${installdir}/gfx/skate.ico</windowsIcon>
+                    <windowsPath>${installdir}\bin</windowsPath>
+                </shortcut>
+            </desktopShortcutList>
+            <folderList>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>windows-programfiles</name>
+                    <platforms>windows</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore/gfx</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore/bin</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Uninstall</comment>
+                            <exec>${installdir}/${uninstallerName}</exec>
+                            <icon></icon>
+                            <name>Uninstall ${product_fullname}</name>
+                            <path>${installdir}</path>
+                            <platforms>all</platforms>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath>${installdir}</windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}/</destination>
+                    <name>osx-programfiles</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore-osx/Derby Score.app</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Uninstall</comment>
+                            <exec>${installdir}/${uninstallerName}</exec>
+                            <icon></icon>
+                            <name>Uninstall ${product_fullname}</name>
+                            <path>${installdir}</path>
+                            <platforms>all</platforms>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath>${installdir}</windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>linux-programfiles</name>
+                    <platforms>linux</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore/gfx</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore/bin</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Uninstall</comment>
+                            <exec>${installdir}/${uninstallerName}</exec>
+                            <icon></icon>
+                            <name>Uninstall ${product_fullname}</name>
+                            <path>${installdir}</path>
+                            <platforms>all</platforms>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath>${installdir}</windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>linux-ppc-programfiles</name>
+                    <platforms>linux-ppc</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore/gfx</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore/bin</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Uninstall</comment>
+                            <exec>${installdir}/${uninstallerName}</exec>
+                            <icon></icon>
+                            <name>Uninstall ${product_fullname}</name>
+                            <path>${installdir}</path>
+                            <platforms>all</platforms>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath>${installdir}</windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>linux-x64-programfiles</name>
+                    <platforms>linux-x64</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore/gfx</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>stage/derbyscore/bin</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Uninstall</comment>
+                            <exec>${installdir}/${uninstallerName}</exec>
+                            <icon></icon>
+                            <name>Uninstall ${product_fullname}</name>
+                            <path>${installdir}</path>
+                            <platforms>all</platforms>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath>${installdir}</windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+            </folderList>
+            <startMenuShortcutList>
+                <startMenuShortcut>
+                    <comment>Uninstall ${product_fullname}</comment>
+                    <name>Uninstall ${product_fullname}</name>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon></windowsIcon>
+                    <windowsPath>${installdir}/</windowsPath>
+                </startMenuShortcut>
+                <startMenuShortcut>
+                    <comment>DerbyScore ${product_version}</comment>
+                    <name>${product_fullname} ${product_version}</name>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${javaw_executable}</windowsExec>
+                    <windowsExecArgs>"-Dproject.version=${project_version}" -jar derbyscore.jar</windowsExecArgs>
+                    <windowsIcon>${installdir}/gfx/skate.ico</windowsIcon>
+                    <windowsPath>${installdir}\bin</windowsPath>
+                </startMenuShortcut>
+            </startMenuShortcutList>
+        </component>
+    </componentList>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>${platform_install_prefix}/${product_shortname}-${product_version}</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>yes</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>yes</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+    </parameterList>
+</project>
+

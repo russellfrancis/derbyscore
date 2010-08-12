@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="DerbyScore" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <import file="build.common.xml"/>
+    
+    <property file="build.properties"/>
+    <property name="project.name" value="derbyscore"/>
+    <property name="project.version" value="dev"/>
+    <property name="ivy.src.repo" value="http://ivy.metro-six.com"/>
+    <property name="native-install-builder" value="/opt/installbuilder-6.3.1/bin/builder"/>
+    <property name="native-install-output" value="/opt/installbuilder-6.3.1/output"/>
+
+    <!-- === Versions ===================================================== -->
+    <property name="ivy.version" value="2.0.0"/>
+
+    <!-- === Build Properties ============================================= -->
+    <property name="compile.debug" value="true"/>
+    <property name="compile.deprecation" value="false"/>
+    <property name="compile.target" value="6"/>
+    <property name="compile.source" value="6"/>
+
+    <!-- === Paths ======================================================== -->
+    <property name="build.dir" value="build"/>
+    <property name="build.derbyscore.dir" value="${build.dir}/derbyscore"/>
+
+    <property name="src.dir" value="src"/>
+
+    <property name="lib.dir" value="lib"/>
+    <property name="lib.derbyscore.testtime.dir" value="${lib.dir}/derbyscore/testtime"/>
+    <property name="lib.derbyscore.runtime.dir" value="${lib.dir}/derbyscore/runtime"/>
+    <property name="lib.derbyscore.buildtime.dir" value="${lib.dir}/derbyscore/buildtime"/>
+
+    <property name="dist.dir" value="dist"/>
+
+    <property name="stage.dir" value="stage"/>
+    <property name="stage.derbyscore.dir" value="${stage.dir}/derbyscore"/>
+
+    <!-- === Classpaths =================================================== -->
+    <path id="lib.derbyscore.runtime.classpath">
+        <fileset dir="${lib.derbyscore.runtime.dir}" includes="*.jar"/>
+    </path>
+
+    <path id="lib.derbyscore.buildtime.classpath">
+        <fileset dir="${lib.derbyscore.buildtime.dir}" includes="*.jar"/>
+    </path>
+
+    <path id="lib.derbyscore.testtime.classpath">
+        <fileset dir="${lib.derbyscore.testtime.dir}" includes="*.jar"/>
+    </path>
+
+    <!-- =========================================================================================================== -->
+    <!--    COMPILATION TARGETS                                                                                      -->
+    <!-- =========================================================================================================== -->
+
+    <!-- =========================================================================================================== -->
+    <target name="compile-derbyscore" depends="resolve-derbyscore-buildtime,resolve-derbyscore-runtime,install-cobertura" unless="compiled.derbyscore">
+        <generic-compile component.name="derbyscore">
+            <component-classpath>
+                <path refid="lib.derbyscore.buildtime.classpath"/>
+                <path refid="lib.derbyscore.runtime.classpath"/>
+            </component-classpath>
+        </generic-compile>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <!--    TESTING TARGETS                                                                                          -->
+    <!-- =========================================================================================================== -->
+
+    <!-- =========================================================================================================== -->
+    <target name="test-all" depends="install-findbugs,install-cobertura" unless="test.no">
+        <delete file="cobertura.ser"/>
+        <antcall target="test-derbyscore"/>
+        <cobertura-report format="xml" destdir="${dist.dir}/reports/cobertura-xml">
+            <fileset dir="${src.dir}/derbyscore/java">
+                <include name="**/*.java"/>
+            </fileset>
+        </cobertura-report>
+        <cobertura-report format="html" destdir="${dist.dir}/reports/cobertura-html">
+            <fileset dir="${src.dir}/derbyscore/java">
+                <include name="**/*.java"/>
+            </fileset>
+        </cobertura-report>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <target name="test-derbyscore" depends="test-derbyscore-findbugs,test-derbyscore-unittests"/>
+
+    <!-- =========================================================================================================== -->
+    <target name="test-derbyscore-findbugs" depends="compile-derbyscore,install-findbugs" unless="findbugs.no">
+        <property name="findbugs.report.output" value="html"/>
+        <generic-run-findbugs component.name="derbyscore" report.output="${findbugs.report.output}">
+            <component-classpath>
+                <path refid="lib.derbyscore.runtime.classpath"/>
+            </component-classpath>
+        </generic-run-findbugs>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <target name="test-derbyscore-unittests" depends="compile-derbyscore">
+        <generic-run-unittests component.name="derbyscore">
+            <component-classpath>
+                <path refid="lib.derbyscore.buildtime.classpath"/>
+                <path refid="lib.derbyscore.runtime.classpath"/>
+            </component-classpath>
+        </generic-run-unittests>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <target name="dependency-report" depends="install-ivy,resolve-all">
+        <ivy:report todir="${dist.dir}/reports/derbyscore/dependency" conf="derbyscore-buildtime"/>
+        <ivy:report todir="${dist.dir}/reports/derbyscore/dependency" conf="derbyscore-runtime"/>
+        <ivy:report todir="${dist.dir}/reports/derbyscore/dependency" conf="derbyscore-testtime"/>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <!--    DOCUMENTATION TARGETS                                                                                    -->
+    <!-- =========================================================================================================== -->
+
+    <!-- =========================================================================================================== -->
+    <target name="javadoc-all" depends="resolve-derbyscore-runtime,resolve-derbyscore-buildtime" unless="no.javadocs">
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${dist.dir}/docs"/>
+        <mkdir dir="${dist.dir}/docs/api"/>
+        <javadoc    destdir="${dist.dir}/docs/api"
+                    author="true"
+                    version="true"
+                    packagenames="com.liquidatom.*">
+            <sourcefiles>
+                <fileset dir="${src.dir}/derbyscore/java">
+                    <include name="**/*.java"/>
+                    <include name="**/package.html"/>
+                </fileset>
+            </sourcefiles>
+            <classpath>
+                <path refid="lib.derbyscore.runtime.classpath"/>
+                <path refid="lib.derbyscore.buildtime.classpath"/>
+            </classpath>
+        </javadoc>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <!--    STAGING TARGETS                                                                                          -->
+    <!-- =========================================================================================================== -->
+
+    <!-- =========================================================================================================== -->
+    <target name="stage-derbyscore" depends="compile-derbyscore" description="layout the files needed for the derbyscore application.">
+        <mkdir dir="${stage.dir}"/>
+        <mkdir dir="${stage.derbyscore.dir}"/>
+        <mkdir dir="${stage.derbyscore.dir}/bin"/>
+
+        <!-- Copy 3rd party libraries into the dist dir -->
+        <copy todir="${stage.derbyscore.dir}/bin">
+            <fileset dir="${lib.derbyscore.runtime.dir}">
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${stage.derbyscore.dir}/gfx">
+            <fileset dir="${src.dir}/derbyscore/resources/gfx">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+
+        <copy file="derbyscore.template.xml" tofile="derbyscore.xml">
+            <filterset>
+                <filter token="VERSION" value="${project.version}"/>
+            </filterset>
+        </copy>
+
+        <!-- generate distributables -->
+        <jar manifest="${src.dir}/derbyscore/MANIFEST.MF" destfile="${stage.derbyscore.dir}/bin/${project.name}.jar">
+            <fileset dir="${build.derbyscore.dir}"/>
+        </jar>
+    </target>
+
+    <target name="stage-osx-derbyscore" depends="compile-derbyscore">
+        <mkdir dir="${stage.dir}"/>
+        <mkdir dir="${stage.dir}/derbyscore-osx"/>
+        <mkdir dir="${stage.dir}/derbyscore-osx/Derby Score.app"/>
+        <copy todir="${stage.dir}/derbyscore-osx/Derby Score.app">
+            <fileset dir="layout/macosx">
+                <include name="**/*"/>
+                <exclude name="**/Info.plist"/>
+            </fileset>
+        </copy>
+        <copy todir="${stage.dir}/derbyscore-osx/Derby Score.app">
+            <fileset dir="layout/macosx">
+                <include name="**/Info.plist"/>
+            </fileset>
+            <filterset>
+                <filter token="VERSION" value="${project.version}"/>
+            </filterset>
+        </copy>
+        <copy todir="${stage.dir}/derbyscore-osx/Derby Score.app/Contents/Resources">
+            <fileset dir="${src.dir}/derbyscore/resources/gfx">
+                <include name="*.png"/> <!-- Linux   -->
+                <include name="*.ico"/> <!-- Windows -->
+                <include name="*.icns"/><!-- MacOS X -->
+            </fileset>
+        </copy>
+
+        <copy todir="${stage.dir}/derbyscore-osx/Derby Score.app/Contents/Resources/Java">
+            <fileset dir="${lib.derbyscore.runtime.dir}">
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+
+        <jar manifest="${src.dir}/derbyscore/MANIFEST.MF" destfile="${stage.dir}/derbyscore-osx/Derby Score.app/Contents/Resources/Java/${project.name}.jar">
+            <fileset dir="${build.derbyscore.dir}"/>
+        </jar>
+
+        <chmod perm="ugo+x">
+            <fileset dir="${stage.dir}/derbyscore-osx/Derby Score.app/Contents/MacOS">
+                <include name="**/*"/>
+            </fileset>
+        </chmod>
+    </target>
+    
+    <!-- =========================================================================================================== -->
+    <target name="package" depends="stage-derbyscore,stage-osx-derbyscore">
+        <delete>
+            <fileset dir="${native-install-output}" includes="**/*"/>
+        </delete>
+
+        <exec executable="${native-install-builder}" dir=".">
+            <arg value="build"/>
+            <arg value="derbyscore.xml"/>
+            <arg value="windows"/>
+        </exec>
+
+        <exec executable="${native-install-builder}" dir=".">
+            <arg value="build"/>
+            <arg value="derbyscore.xml"/>
+            <arg value="osx"/>
+        </exec>
+
+        <exec executable="${native-install-builder}" dir=".">
+            <arg value="build"/>
+            <arg value="derbyscore.xml"/>
+            <arg value="linux"/>
+        </exec>
+
+        <exec executable="${native-install-builder}" dir=".">
+            <arg value="build"/>
+            <arg value="derbyscore.xml"/>
+            <arg value="linux-x64"/>
+        </exec>
+
+        <exec executable="${native-install-builder}" dir=".">
+            <arg value="build"/>
+            <arg value="derbyscore.xml"/>
+            <arg value="linux-ppc"/>
+        </exec>
+        
+        <copy todir="${dist.dir}">
+            <fileset dir="${native-install-output}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+
+        <chmod perm="ugo+x">
+            <fileset dir="${dist.dir}/${project.name}-${project.version}-osx-installer.app/Contents/MacOS">
+                <include name="**/*"/>
+            </fileset>
+        </chmod>
+
+        <sleep seconds="2"/>
+
+        <exec executable="zip" dir="${dist.dir}">
+            <arg value="-r"/>
+            <arg value="${project.name}-${project.version}-osx-installer.zip"/>
+            <arg value="${project.name}-${project.version}-osx-installer.app"/>
+        </exec>
+
+        <delete file="${dist.dir}/${project.name}-${project.version}-osx-installer.app"/>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <target name="stage-web" depends="test-all,javadoc-all,package">
+        <mkdir dir="${stage.dir}"/>
+        <mkdir dir="${stage.dir}/web"/>
+        <copy todir="${stage.dir}/web">
+            <fileset dir="web">
+                <exclude name="**/.*"/>
+                <include name="**/*.html"/>
+            </fileset>
+            <filterset>
+                <filter token="WINDOWS_INSTALLER" value="${project.name}-${project.version}-windows-installer.exe"/>
+                <filter token="MACOSX_INSTALLER" value="${project.name}-${project.version}-osx-installer.zip"/>
+                <filter token="LINUX_INSTALLER" value="${project.name}-${project.version}-linux-installer.bin"/>
+                <filter token="LINUX_PPC_INSTALLER" value="${project.name}-${project.version}-linux-ppc-installer.bin"/>
+                <filter token="LINUX_X64_INSTALLER" value="${project.name}-${project.version}-linux-x64-installer.bin"/>
+                <filter token="VERSION" value="${project.version}"/>
+            </filterset>
+        </copy>
+        <copy todir="${stage.dir}/web">
+            <fileset dir="web">
+                <exclude name="**/.*"/>
+                <exclude name="**/*.html"/>
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+        <copy todir="${stage.dir}/web">
+            <fileset dir="${dist.dir}">
+                <include name="reports/**/*"/>
+            </fileset>
+        </copy>
+        <copy todir="${stage.dir}/web">
+            <fileset dir="${dist.dir}">
+                <include name="docs/**/*"/>
+            </fileset>
+        </copy>
+        <copy todir="${stage.dir}/web/download">
+            <fileset dir="${dist.dir}">
+                <include name="*.bin"/>
+                <include name="*.exe"/>
+                <include name="*.zip"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <target name="deploy" depends="stage-web">
+        <fail unless="deploy.dir"/>
+        <mkdir dir="${deploy.dir}"/>
+        <exec executable="rsync" failonerror="true">
+            <arg line="-Wctrv --delete-after ${stage.dir}/web/ ${deploy.dir}"/>
+        </exec>
+    </target>
+
+    <target name="deploy-remote" depends="stage-web">
+        <fail unless="deploy.dir"/>
+        <fail unless="deploy.host"/>
+        <fail unless="deploy.remote_user"/>
+        <exec executable="rsync" failonerror="true">
+            <arg value="-Wctrv"/>
+            <arg value="-e"/>
+            <arg value="ssh -l ${deploy.remote_user}"/>
+            <arg value="${stage.dir}/web/"/>
+            <arg value="${deploy.host}:${deploy.dir}"/>
+        </exec>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <!--    DEBUGGING TARGETS                                                                                        -->
+    <!-- =========================================================================================================== -->
+
+    <!-- =========================================================================================================== -->
+    <target name="run">
+        <property name="debugger.suspend" value="n"/>
+        <property name="no.javadocs" value="true"/>
+        <property name="no.unittests" value="true"/>
+        <property name="no.findbugs" value="true"/>
+        <antcall target="stage-derbyscore"/>
+        <java jar="${stage.derbyscore.dir}/bin/${project.name}.jar" fork="true" dir="${stage.derbyscore.dir}/bin">
+            <!-- update MANIFEST.MF if you need to modify the classpath. -->
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,address=10000,server=y,suspend=${debugger.suspend}" />
+        </java>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <!--    CLEANUP TARGETS                                                                                          -->
+    <!-- =========================================================================================================== -->
+
+    <!-- =========================================================================================================== -->
+    <target name="clean" description="Cleanup all transient artifacts from previous resolves and builds.">
+        <parallel>
+            <delete file="cobertura.ser"/>
+            <delete dir="${dist.dir}"/>
+            <delete dir="${build.dir}"/>
+            <delete dir="${stage.dir}"/>
+            <delete includeemptydirs="true">
+                <fileset dir="${lib.dir}">
+                    <include name="**/*"/>
+                    <exclude name="ivy/**/*"/>
+                </fileset>
+            </delete>
+        </parallel>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <!--    RESOLVE DEPENDENCY TARGETS                                                                               -->
+    <!-- =========================================================================================================== -->
+
+    <!-- =========================================================================================================== -->
+    <target name="resolve-all" depends="resolve-derbyscore-buildtime,resolve-derbyscore-runtime,resolve-derbyscore-testtime"/>
+
+    <!-- =========================================================================================================== -->
+    <target name="resolve-derbyscore-runtime" depends="install-ivy" unless="derbyscore-runtime.resolved">
+        <generic-resolve component.name="derbyscore" component.conf="runtime"/>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <target name="resolve-derbyscore-buildtime" depends="install-ivy" unless="derbyscore-buildtime.resolved">
+        <generic-resolve component.name="derbyscore" component.conf="buildtime"/>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <target name="resolve-derbyscore-testtime" depends="install-ivy" unless="derbyscore-testtime.resolved">
+        <generic-resolve component.name="derbyscore" component.conf="testtime"/>
+    </target>
+
+</project>

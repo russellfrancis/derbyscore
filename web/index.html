@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>DerbyScore</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css"/>
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+        <script type="text/javascript"><!--
+            $(document).ready(function(){
+                $(".content").hide();
+                $(".sub-menu").hide();
+                selectMenuitem("#about");
+                $("#about-content").show();
+
+                // ABOUT MENU ITEM
+                $("#about").click(function(){
+                    selectMenuitem("#about");
+                    $(".content").hide();
+                    $("#about-content").show();
+                });
+
+                // DOWNLOAD MENU
+                $("#download").click(function(){
+                    selectMenuitem("#download");
+                    $(".content").hide();
+                    $("#download-content").show();
+                });
+
+                $("#download-windows").click(function() {
+                    selectMenuitem("#download-windows");
+                    $(".content").hide();
+                    $("#download-windows-content").show();
+                });
+
+                $("#download-linux-x86").click(function() {
+                    selectMenuitem("#download-linux-x86");
+                    $(".content").hide();
+                    $("#download-linux-x86-content").show();
+                });
+
+                $("#download-linux-x64").click(function() {
+                    selectMenuitem("#download-linux-x64");
+                    $(".content").hide();
+                    $("#download-linux-x64-content").show();
+                });
+
+                $("#download-linux-ppc").click(function() {
+                    selectMenuitem("#download-linux-ppc");
+                    $(".content").hide();
+                    $("#download-linux-ppc-content").show();
+                });
+
+                // QUALITY ASSURANCE MENU
+                $("#qa").click(function(){
+                    selectMenuitem("#qa");
+                    $(".sub-menu").hide("slow");
+                    $(".content").hide();
+                    $("#qa-menu").show("slow");
+                    $("#qa-content").show();
+                });
+
+                // DEVELOPERS
+                $("#developers").click(function(){
+                    selectMenuitem("#developers");
+                    $(".sub-menu").hide("slow");
+                    $("#developers-menu").show("slow");
+                });
+
+                $("#developers-get-source").click(function(){
+                    selectMenuitem("#developers-get-source");
+                    $(".content").hide();
+                    $("#developers-get-source-content").show();
+                });
+
+                // CONTACT
+                $("#contact").click(function(){
+                    selectMenuitem("#contact");
+                    $(".content").hide();
+                    $("#contact-content").show();
+                });
+
+                function selectMenuitem(selector) {
+                    $(".menu-selected").removeClass("menu-selected");
+                    $(selector).addClass("menu-selected");
+                }
+            });
+        --></script>
+    </head>
+    <body>
+        <div class="container">
+            <img alt="Derby Score" src="gfx/derbyscore_logo.png"/>
+
+            <div class="clear"></div>
+
+            <div class="menu-container">
+                <ul>
+                    <li><a id="about" class="menuitem" href="#">About</a></li>
+                    <li><a id="download" class="menuitem" href="#">Download</a></li>
+                    <li>
+                        <a id="qa" class="menuitem" href="#">Quality Assurance</a>
+                        <ul id="qa-menu" class="sub-menu">
+                            <li><a id="qa-findbugs" class="menuitem" href="reports/derbyscore/findbugs-html/findbugs.html">Static-Analysis</a></li>
+                            <li><a id="qa-unittests" class="menuitem" href="reports/derbyscore/junit-html/index.html">Unittests</a></li>
+                            <li><a id="qa-coverage" class="menuitem" href="reports/cobertura-html/index.html">Code Coverage</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="developers" class="menuitem" href="#">Developers</a>
+                        <ul id="developers-menu" class="sub-menu">
+                            <li><a id="developers-documentation" class="menuitem" href="docs/api/index.html">Documentation</a></li>
+                            <li><a id="developers-get-source" class="menuitem" href="#">Source Code</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="contact" class="menuitem" href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="content-container">
+                <div id="about-content" class="content">
+                    <div class="image-container">
+                        <a href="gfx/derbyscore_stylized.png">
+                            <img width="225" height="175" alt="Stylized Scoreboard Display" src="gfx/derbyscore_stylized.png"/>
+                        </a>
+                        <div class="image-caption">The stylized display.</div>
+
+                        <a href="gfx/derbyscore_control_panel.png">
+                            <img width="225" height="175" alt="Control Panel" src="gfx/derbyscore_control_panel.png"/>
+                        </a>
+                        <div class="image-caption">The control panel.</div>
+                    </div>
+
+                    <p>
+                        Derby Score is a small application which can be used as a scoreboard
+                        for <a href="http://wftda.com/">Roller Derby</a> bouts. Though there are existing
+                        applications which aim to do similar things some commercial such as
+                        <a href="http://www.pcscoreboards.com/rollerderbyscoreboarddeluxe/">Scoreboard Deluxe</a>
+                        and some free such as
+                        <a href="http://www.zebrahuddle.com/index.php?action=downloads;sa=view&id=1">DerbyBoard PC</a> and
+                        <a href="http://sourceforge.net/projects/derbyscoreboard/">Derby Scoreboard</a>, we felt that
+                        there was room to improve.  One of the areas which we wanted to focus on was the visual appeal
+                        of the scoreboard making something which was flexible enough and pretty enough to satisfy our
+                        <a href="http://burningriverrollergirls.com/">league</a>, 
+                        <a href="http://burningriverrollergirls.com/sponsors.html">sponsers</a> and
+                        <a href="http://www.facebook.com/BurningRiverRollerGirls">fans</a>.
+                    </p>
+
+                    <p>Derby Score is free of charge and open source sporting a
+                        <a href="http://www.opensource.org/licenses/bsd-license.html">BSD License</a>, making the source code
+                        available for others to view, use and extend with a few minor conditions.  The application is 
+                        cross-platform running equally well on Windows, Mac OSX and Linux.  Has an extremely flexible
+                        layout and rendering engine allowing for complete control of the look and feel of the scoreboard.
+                        The use of javascript to conditionally modify the display of the scoreboard based on the
+                        domain model of the application.
+                    </p>
+
+                    <p>
+                        We hope you try and enjoy the scoreboard and would love to hear your feedback or suggestions
+                        for future improvement.
+                    </p>
+
+                </div>
+
+                <div id="download-content" class="content">
+                    <h2>Download Derby Score @VERSION@</h2>
+                    <div style="padding-left: 25px;">
+                        <img src="gfx/win.png" alt="Windows Logo"/>Windows (installer) (<a href="download/@WINDOWS_INSTALLER@">Download</a>)<br/><br/>
+                        <img src="gfx/macosx.png" alt="Mac OSX Logo"/>Mac OSX (installer) (<a href="download/@MACOSX_INSTALLER@">Download</a>)<br/><br/>
+                        <img src="gfx/linux.png" alt="Linux Logo"/>Linux x86 (installer) (<a href="download/@LINUX_INSTALLER@">Download</a>)<br/><br/>
+                        <img src="gfx/linux.png" alt="Linux Logo"/>Linux x64 (installer) (<a href="download/@LINUX_X64_INSTALLER@">Download</a>)<br/><br/>
+                        <img src="gfx/linux.png" alt="Linux Logo"/>Linux PPC (installer) (<a href="download/@LINUX_PPC_INSTALLER@">Download</a>)
+                    </div>
+                </div>
+
+                <div id="qa-content" class="content">
+                    <p>
+                        The quality and reliability of Derby Score and all software is very important to me as a
+                        developer.  Nothing would be more embarrassing than having the application fail on bout day.
+                        Since this is an open-souce application we have the freedom to publish the results of tests that
+                        we run against the application before releasing it so that you have confidence in the software
+                        you are using.
+                    </p>
+
+                    <p>
+                        We currently use the <a href="http://en.wikipedia.org/wiki/Static_code_analysis">static-analysis</a>
+                        tool called <a href="http://findbugs.sourceforge.net/">Findbugs</a> to look for certain classes
+                        of errors within the application.  We also use <a href="http://www.junit.org/">JUnit</a> and
+                        <a href="http://cobertura.sourceforge.net/">Cobertura</a> to execute unit tests on sections of
+                        the application and to get an idea of how much of the application is being exercised by our
+                        test suite.
+                    </p>
+                </div>
+
+                <div id="developers-get-source-content" class="content">
+                    <p> The source code for Derby Score is freely available and is released under a BSD License for
+                        your use.  You may grab a copy from the subversion repository at the following location.
+                    </p>
+
+                    <p>
+                        <code>
+                            # svn co https://www.atomic-drive.com/svnroot/derbyscore/trunk derbyscore
+                        </code>
+                    </p>
+                </div>
+
+                <div id="contact-content" class="content">
+                    <p>
+                        I would like to thank Will Hutson aka. <em>Oliver Pist</em> for contributing ideas as to the
+                        feature set and design of the scoreboard, motivation and really nice looking images to use in
+                        the default theme for the scoreboard and for his work in dressing up the league and team logos
+                        for use during our bouts!
+                    </p>
+                    <p>
+                        If you have suggestions comments or otherwise feel free to send Russ Francis aka.
+                        <a href="mailto:russell.francis@gmail.com">Algebro</a> a note.
+                    </p>
+                </div>
+            </div>
+
+            <div class="clear">&nbsp;</div>
+        </div>
+
+        <div class="footer">
+            Copyright &copy; 2010 Russell Francis (Algebro), All Rights Reserved.<br/>
+        </div>
+    </body>
+</html>

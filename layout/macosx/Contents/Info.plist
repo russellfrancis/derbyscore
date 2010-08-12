@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>English</string>
+        <key>CFBundleExecutable</key>
+        <string>JavaApplicationStub</string>
+        <key>CFBundleGetInfoString</key>
+        <string>Derby Score, Copyright 2010 Russell Francis (Algebro).</string>
+        <key>CFBundleIconFile</key>
+        <string>skate.icns</string>
+        <key>CFBundleIdentifier</key>
+        <string>com.liquidatom.derbyscore</string>
+        <key>CFBundleInfoDictionaryVersion</key>
+        <string>6.0</string>
+        <key>CFBundleName</key>
+        <string>Derby Score</string>
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+        <key>CFBundleShortVersionString</key>
+        <string>@VERSION@</string>
+        <key>CFBundleSignature</key>
+        <string>Derby Score</string>
+        <key>CFBundleVersion</key>
+        <string>@VERSION@</string>
+        <key>Java</key>
+        <dict>
+            <key>JVMVersion</key>
+            <string>1.6+</string>
+            <key>MainClass</key>
+            <string>com.liquidatom.derbyscore.Main</string>
+            <key>ClassPath</key>
+            <array>
+				<string>$JAVAROOT/derbyscore.jar</string> 
+				<string>$JAVAROOT/jcl-over-slf4j-1.5.8.jar</string> 
+				<string>$JAVAROOT/jsr305-rev49.jar</string>
+				<string>$JAVAROOT/log4j-1.2.15.jar</string>
+				<string>$JAVAROOT/slf4j-api-1.5.8.jar</string>
+				<string>$JAVAROOT/slf4j-log4j12-1.5.8.jar</string>
+				<string>$JAVAROOT/js-1_7R1.jar</string>
+				<string>$JAVAROOT/picocontainer-2.10.2.jar</string>
+           </array>
+            <key>Properties</key>
+            <dict>
+                <key>apple.laf.useScreenMenuBar</key>
+                <string>true</string>
+            </dict>
+            <key>VMOptions</key>
+            <string>-Xmx256m</string>
+        </dict>
+	</dict>
+ </plist>
