@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: com.liquidatom.derbyscore.Main
+Class-Path: jcl-over-slf4j-1.5.8.jar jsr305-rev49.jar log4j-1.2.15.jar slf4j-api-1.5.8.jar slf4j-log4j12-1.5.8.jar js-1_7R1.jar picocontainer-2.10.2.jar
