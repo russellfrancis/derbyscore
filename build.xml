@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="DerbyScore" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="derbyscore" xmlns:ivy="antlib:org.apache.ivy.ant">
 
     <import file="build.common.xml"/>
     
     <property file="build.properties"/>
     <property name="project.name" value="derbyscore"/>
     <property name="project.version" value="dev"/>
-    <property name="ivy.src.repo" value="http://ivy.metro-six.com"/>
+    <property name="ivy.settings.dir" value="settings"/>
+    <property name="ivy.settings.file" value="ivysettings.xml"/>
     <property name="native-install-builder" value="/opt/installbuilder-6.3.1/bin/builder"/>
     <property name="native-install-output" value="/opt/installbuilder-6.3.1/output"/>
 
     <!-- === Versions ===================================================== -->
-    <property name="ivy.version" value="2.0.0"/>
+    <property name="ivy.version" value="2.2.0-rc1"/>
 
     <!-- === Build Properties ============================================= -->
     <property name="compile.debug" value="true"/>
@@ -386,18 +387,24 @@
     <target name="resolve-all" depends="resolve-derbyscore-buildtime,resolve-derbyscore-runtime,resolve-derbyscore-testtime"/>
 
     <!-- =========================================================================================================== -->
-    <target name="resolve-derbyscore-runtime" depends="install-ivy" unless="derbyscore-runtime.resolved">
+    <target name="resolve-derbyscore-runtime" depends="ivy-settings" unless="derbyscore-runtime.resolved">
         <generic-resolve component.name="derbyscore" component.conf="runtime"/>
     </target>
 
     <!-- =========================================================================================================== -->
-    <target name="resolve-derbyscore-buildtime" depends="install-ivy" unless="derbyscore-buildtime.resolved">
+    <target name="resolve-derbyscore-buildtime" depends="ivy-settings" unless="derbyscore-buildtime.resolved">
         <generic-resolve component.name="derbyscore" component.conf="buildtime"/>
     </target>
 
     <!-- =========================================================================================================== -->
-    <target name="resolve-derbyscore-testtime" depends="install-ivy" unless="derbyscore-testtime.resolved">
+    <target name="resolve-derbyscore-testtime" depends="ivy-settings" unless="derbyscore-testtime.resolved">
         <generic-resolve component.name="derbyscore" component.conf="testtime"/>
+    </target>
+
+    <!-- =========================================================================================================== -->
+    <target name="ivy-settings" depends="install-ivy" unless="resolve.no">
+        <fail unless="ivy.settings.dir"/>
+        <ivy:settings file="${ivy.settings.dir}/${ivy.settings.file}"/>
     </target>
 
 </project>

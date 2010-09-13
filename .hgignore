@@ -1,2 +1,6 @@
-lib
+syntax: regexp
+
+^lib$
+^stage$
 nbproject
+^derbyscore\.xml$
