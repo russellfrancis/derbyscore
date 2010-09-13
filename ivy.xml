@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0">
-
-    <info organisation="liquidatomllc" module="derbyscore"/>
+    <info organisation="m6" module="derbyscore"/>
     <configurations defaultconfmapping="derbyscore-buildtime->*;derbyscore-runtime->*;derbyscore-testtime->*;">
         <conf name="derbyscore-testtime"/>
         <conf name="derbyscore-runtime"/>
@@ -19,6 +18,5 @@
         <dependency org="easymock" name="easymock" rev="2.4" conf="derbyscore-testtime"/>
         <dependency org="findbugs" name="findbugs" rev="1.3.9" conf="derbyscore-testtime"/>
         <dependency org="cobertura" name="cobertura" rev="1.9.4.1" conf="derbyscore-testtime"/>
-
     </dependencies>
 </ivy-module>
