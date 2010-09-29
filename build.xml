@@ -8,8 +8,8 @@
     <property name="project.version" value="dev"/>
     <property name="ivy.settings.dir" value="settings"/>
     <property name="ivy.settings.file" value="ivysettings.xml"/>
-    <property name="native-install-builder" value="/opt/installbuilder-6.3.1/bin/builder"/>
-    <property name="native-install-output" value="/opt/installbuilder-6.3.1/output"/>
+    <property name="native-install-builder" value="/opt/installbuilder-6.5.4/bin/builder"/>
+    <property name="native-install-output" value="/opt/installbuilder-6.5.4/output"/>
 
     <!-- === Versions ===================================================== -->
     <property name="ivy.version" value="2.2.0-rc1"/>
