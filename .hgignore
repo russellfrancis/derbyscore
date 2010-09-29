@@ -1,6 +1,9 @@
 syntax: regexp
 
 ^lib$
+^dist$
+^build$
 ^stage$
+^cobertura\.ser$
 nbproject
 ^derbyscore\.xml$
