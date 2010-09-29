@@ -91,7 +91,7 @@
                 <folder>
                     <description>Program Files</description>
                     <destination>${installdir}</destination>
-                    <name>windows-programfiles</name>
+                    <name>windows_programfiles</name>
                     <platforms>windows</platforms>
                     <distributionFileList>
                         <distributionDirectory>
@@ -120,7 +120,7 @@
                 <folder>
                     <description>Program Files</description>
                     <destination>${installdir}/</destination>
-                    <name>osx-programfiles</name>
+                    <name>osx_programfiles</name>
                     <platforms>osx</platforms>
                     <distributionFileList>
                         <distributionDirectory>
@@ -146,7 +146,7 @@
                 <folder>
                     <description>Program Files</description>
                     <destination>${installdir}</destination>
-                    <name>linux-programfiles</name>
+                    <name>linux_programfiles</name>
                     <platforms>linux</platforms>
                     <distributionFileList>
                         <distributionDirectory>
@@ -175,7 +175,7 @@
                 <folder>
                     <description>Program Files</description>
                     <destination>${installdir}</destination>
-                    <name>linux-ppc-programfiles</name>
+                    <name>linux_ppc_programfiles</name>
                     <platforms>linux-ppc</platforms>
                     <distributionFileList>
                         <distributionDirectory>
@@ -204,7 +204,7 @@
                 <folder>
                     <description>Program Files</description>
                     <destination>${installdir}</destination>
-                    <name>linux-x64-programfiles</name>
+                    <name>linux_x64_programfiles</name>
                     <platforms>linux-x64</platforms>
                     <distributionFileList>
                         <distributionDirectory>
