@@ -59,8 +59,10 @@ public class ScoreboardWindow extends JFrame implements BoutListener, ComponentL
         setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
         setLocationByPlatform(true);
         setFocusTraversalKeysEnabled(false);
-        setIgnoreRepaint(true);
+// Fixes issue with scoreboard not redrawing itself when other windows are over top of it.
+//        setIgnoreRepaint(true);
         addComponentListener(this);
+        this.getRootPane().setDoubleBuffered(true);
 
         try {
             URL appLogo = getClass().getResource("/gfx/brrg.png");
@@ -81,7 +83,12 @@ public class ScoreboardWindow extends JFrame implements BoutListener, ComponentL
         if (strategy != null) {
             Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
             try {
-                super.paint(g);
+                // fixes issue of showing the gray square.
+                //super.paint(g);
+                Rectangle r = parentGraphics.getClipBounds();
+                if (r != null) {
+                    g.setClip((int)r.getX(), (int)r.getY(), (int)r.getWidth(), (int)r.getHeight());
+                }
                 g.transform(xform);
                 render(g);
                 strategy.show();
@@ -222,7 +229,7 @@ public class ScoreboardWindow extends JFrame implements BoutListener, ComponentL
         transform.concatenate(AffineTransform.getScaleInstance(sx, sy));
 
         // Apply this transformation matrix to be used during rendering.
-        this.xform =transform;
+        this.xform = transform;
 
         // Instruct the application to rerender the scoreboard.
         repaint();
