@@ -228,6 +228,11 @@ public class Bout implements ClockListener, TeamListener, ReadWriteLock {
             fireOnChanged();
         }
     }
+    
+    public int getAdDigit() {
+        // Toggle the ads every 130 seconds  130 * 1000.
+        return (int) ((System.currentTimeMillis() / (130 * 1000)) % 2);
+    }
 
     public boolean isTimeout() {
         return BoutState.TEAM_TIMEOUT.equals(getBoutState());
