@@ -262,28 +262,12 @@ public class ControlWindow extends JFrame implements BoutListener {
         }
     }
 
+    /**
+     * Display the license text for the application in a dialog box.
+     */
     protected void displayLicense() {
-        try {
-            StringBuilder licenseText = new StringBuilder();
-            InputStream ins = getClass().getResourceAsStream("/license.txt");
-            try {
-                byte[] buf = new byte[8192];
-                int bytesRead = 0;
-                while ((bytesRead = ins.read(buf)) != -1) {
-                    licenseText.append(new String(buf, 0, bytesRead));
-                }
-            } finally {
-                ins.close();
-            }
-
-            LicenseDialog dialog = new LicenseDialog(licenseText.toString());
-            dialog.setVisible(true);
-            
-        } catch (IOException e) {
-            if (log.isErrorEnabled()) {
-                log.error(e.getMessage(), e);
-            }
-        }
+        final LicenseDialog dialog = new LicenseDialog();
+        dialog.setVisible(true);
     }
 
     /** This method is called from within the constructor to

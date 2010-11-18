@@ -1,32 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * LicenseDialog.java
- *
- * Created on Mar 8, 2010, 9:25:12 PM
- */
-
 package com.liquidatom.derbyscore.ui;
 
-import javax.swing.ImageIcon;
-
 /**
- *
- * @author russ
+ * @author Russell Francis (russ@metro-six.com)
  */
 public class LicenseDialog extends javax.swing.JFrame {
 
-    /** Creates new form LicenseDialog */
-    public LicenseDialog(String text) {
+    public LicenseDialog() {
         initComponents();
         setLocationRelativeTo(null);
-        okButton.setIcon(new ImageIcon(getClass().getResource("/gfx/ledgreen.png")));
-        jTextArea1.setText(text);
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane2.getVerticalScrollBar().setValue(jScrollPane2.getVerticalScrollBar().getMinimum());
     }
 
     /** This method is called from within the constructor to
@@ -38,60 +19,52 @@ public class LicenseDialog extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        controlPanel = new javax.swing.JPanel();
         okButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel3 = new javax.swing.JPanel();
-        titleLabel = new javax.swing.JLabel();
+        licensePanel = new javax.swing.JPanel();
+        licenseScrollPane = new javax.swing.JScrollPane();
+        licenseTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("BSD License for DerbyScore");
+        setTitle("License for DerbyScore");
+        setLocationByPlatform(true);
 
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        controlPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
+        okButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ledgreen.png"))); // NOI18N
         okButton.setText("Ok");
+        okButton.setToolTipText("That is nice!");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(okButton);
+        controlPanel.add(okButton);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
+        getContentPane().add(controlPanel, java.awt.BorderLayout.SOUTH);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setEditable(false);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        licenseScrollPane.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Simplified BSD License"));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                .addContainerGap())
+        licenseTextArea.setColumns(20);
+        licenseTextArea.setEditable(false);
+        licenseTextArea.setRows(5);
+        licenseTextArea.setText("Copyright 2009-2010 METRO SIX, INC. All rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are\npermitted provided that the following conditions are met:\n\n   1. Redistributions of source code must retain the above copyright notice, this list of\n      conditions and the following disclaimer.\n\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\n      of conditions and the following disclaimer in the documentation and/or other materials\n      provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY METRO SIX, INC. ``AS IS'' AND ANY EXPRESS OR IMPLIED\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL METRO SIX, INC. OR\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nThe views and conclusions contained in the software and documentation are those of the\nauthors and should not be interpreted as representing official policies, either expressed\nor implied, of METRO SIX, INC.\n");
+        licenseScrollPane.setViewportView(licenseTextArea);
+
+        javax.swing.GroupLayout licensePanelLayout = new javax.swing.GroupLayout(licensePanel);
+        licensePanel.setLayout(licensePanelLayout);
+        licensePanelLayout.setHorizontalGroup(
+            licensePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(licenseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                .addContainerGap())
+        licensePanelLayout.setVerticalGroup(
+            licensePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(licenseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        licenseTextArea.setSelectionStart(0);  licenseTextArea.setSelectionEnd(0);
 
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-
-        titleLabel.setText("BSD License for DerbyScore!");
-        jPanel3.add(titleLabel);
-
-        getContentPane().add(jPanel3, java.awt.BorderLayout.NORTH);
+        getContentPane().add(licensePanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,13 +74,11 @@ public class LicenseDialog extends javax.swing.JFrame {
     }//GEN-LAST:event_okButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JPanel controlPanel;
+    private javax.swing.JPanel licensePanel;
+    private javax.swing.JScrollPane licenseScrollPane;
+    private javax.swing.JTextArea licenseTextArea;
     private javax.swing.JButton okButton;
-    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
 }
