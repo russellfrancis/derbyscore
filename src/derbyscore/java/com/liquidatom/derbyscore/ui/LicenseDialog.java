@@ -1,13 +1,29 @@
 package com.liquidatom.derbyscore.ui;
 
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author Russell Francis (russ@metro-six.com)
  */
-public class LicenseDialog extends javax.swing.JFrame {
+public class LicenseDialog extends JFrame {
 
+    static private final Logger log = LoggerFactory.getLogger(LicenseDialog.class);
+    
     public LicenseDialog() {
         initComponents();
         setLocationRelativeTo(null);
+        try {
+            setIconImage(ImageIO.read(getClass().getResource("/gfx/brrg.png")));
+        }
+        catch (IOException e) {
+            if (log.isErrorEnabled()) {
+                log.error("Unable to set JFrame icon: " + e.getMessage(), e);
+            }
+        }
     }
 
     /** This method is called from within the constructor to
