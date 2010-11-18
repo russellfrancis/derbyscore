@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -16,6 +16,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="loadThemeMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Load Theme"/>
+                <Property name="toolTipText" type="java.lang.String" value="Load a theme for the scoreboard from the system."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loadThemeMenuItemActionPerformed"/>
@@ -26,6 +27,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="quitMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Quit"/>
+                <Property name="toolTipText" type="java.lang.String" value="Exit the application."/>
                 <Property name="doubleBuffered" type="boolean" value="true"/>
               </Properties>
               <Events>
@@ -39,12 +41,13 @@
             <Property name="text" type="java.lang.String" value="Help"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="licenseMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="aboutMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="License"/>
+                <Property name="text" type="java.lang.String" value="About"/>
+                <Property name="toolTipText" type="java.lang.String" value="Information about the application and usage."/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="licenseMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aboutMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -209,8 +212,8 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jamTimeTextField" pref="351" max="32767" attributes="1"/>
-                                  <Component id="periodTimeTextField" alignment="0" pref="351" max="32767" attributes="1"/>
+                                  <Component id="jamTimeTextField" pref="365" max="32767" attributes="1"/>
+                                  <Component id="periodTimeTextField" alignment="0" pref="365" max="32767" attributes="1"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -219,7 +222,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="messageLabel" pref="402" max="32767" attributes="0"/>
+                              <Component id="messageLabel" pref="408" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>

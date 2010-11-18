@@ -1,0 +1,163 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-77,0,0,2,-71"/>
+  </AuxValues>
+
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="controlPanel">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="South"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+        <Property name="alignment" type="int" value="2"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="okButton">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/gfx/ledgreen.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="That is nice!"/>
+            <Property name="label" type="java.lang.String" value="Ok"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="contentPanel">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Center"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="tabbedContentPane" alignment="0" pref="697" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="tabbedContentPane" alignment="0" pref="368" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JTabbedPane" name="tabbedContentPane">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="aboutTextArea.setSelectionStart(0);&#xd;&#xa;aboutTextArea.setSelectionEnd(0);&#xd;&#xa;licenseTextArea.setSelectionStart(0);  &#xd;&#xa;licenseTextArea.setSelectionEnd(0);&#xd;&#xa;usageTextArea.setSelectionStart(0);&#xd;&#xa;usageTextArea.setSelectionEnd(0);"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="aboutScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="About">
+                    <Property name="tabTitle" type="java.lang.String" value="About"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextPane" name="aboutTextArea">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Monospaced" size="12" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="DerbyScore by Russell Francis (russell.francis@gmail.com)&#xa;&#xa;Derby Score is a small application which can be used as a scoreboard for Roller Derby bouts. &#xa;Though there are existing applications which aim to do similar things some commercial and &#xa;others free, we felt that there was room for improvement. One of the areas which we &#xa;wanted to focus on was the visual appeal of the scoreboard making something which was &#xa;flexible enough and pretty enough to satisfy our league, sponsers and fans.&#xa;&#xa;If you have suggestions or would like to contribute to our effort to build a fantastic &#xa;scoreboard utility for roller derby leagues throughout the world, please feel free to contact &#xa;me.&#xa;&#xa;Thanks,&#xa;                               Russell Francis &#xa;                               em: russ@metro-six.com&#xa;                               em: russell.francis@gmail.com"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="licenseScrollPane">
+              <Properties>
+                <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Simplified BSD License"/>
+                  </Border>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="licenseTextArea.setSelectionStart(0);  licenseTextArea.setSelectionEnd(0);"/>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="License">
+                    <Property name="tabTitle" type="java.lang.String" value="License"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="licenseTextArea">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Monospaced" size="12" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Copyright 2009-2010 METRO SIX, INC. All rights reserved.&#xa;&#xa;Redistribution and use in source and binary forms, with or without modification, are&#xa;permitted provided that the following conditions are met:&#xa;&#xa;   1. Redistributions of source code must retain the above copyright notice, this list of&#xa;      conditions and the following disclaimer.&#xa;&#xa;   2. Redistributions in binary form must reproduce the above copyright notice, this list&#xa;      of conditions and the following disclaimer in the documentation and/or other materials&#xa;      provided with the distribution.&#xa;&#xa;THIS SOFTWARE IS PROVIDED BY METRO SIX, INC. ``AS IS&apos;&apos; AND ANY EXPRESS OR IMPLIED&#xa;WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND&#xa;FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL METRO SIX, INC. OR&#xa;CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR&#xa;CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR&#xa;SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON&#xa;ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING&#xa;NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF&#xa;ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.&#xa;&#xa;The views and conclusions contained in the software and documentation are those of the&#xa;authors and should not be interpreted as representing official policies, either expressed&#xa;or implied, of METRO SIX, INC.&#xa;"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="usageScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Usage &amp; Controls">
+                    <Property name="tabTitle" type="java.lang.String" value="Usage &amp; Controls"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextPane" name="usageTextArea">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="=================  COMMON KEYS =================&#xa;&#xa;CTRL + Up:       Add a point to the the jam tracker for the left team.&#xa;CTRL + Down:  Remove a point from the jam tracker for the left team.&#xa;CTRL + L:         Toggle lead jammer status on the left team.&#xa;&#xa;ALT + Up:        Add a point to the the jam tracker for the left team.&#xa;ALT + Down:   Remove a point from the jam tracker for the left team.&#xa;ALT + L:          Toggle lead jammer status on the left team.&#xa;&#xa;=================  TOOLBAR KEYS =================&#xa;&#xa;[F1] - Start Jam:&#xa;&#xa;This begins a 2:00 minute jam putting two minutes on the clock and beginning the count down.  This should be done when the starting whistle for the jam is heard.&#xa;&#xa;      - Linup:&#xa;&#xa;This button will put :30 on the clock and begin counting down, this can be used when waiting for the initial whistle.&#xa;&#xa;[F2] - End Jam:&#xa;&#xa;This will end the jam, putting :30 on the clock and beginning the countdown until the next jam should begin.&#xa;&#xa;      - Timeout&#xa;&#xa;This will begin a 1:00 team initiated timeout, when this is executed, you must also manually adjust the timeouts left for a given team depending on who initiated the timeout.&#xa;&#xa;      - Official Timeout&#xa;&#xa;This will freeze the scoreboard and should be used during an official  timeout.  There are also certain properties which can only be adjusted during an  official timeout such as the time left on the clock or the team logos.&#xa;&#xa;      - Show / Hide Scoreboard&#xa;&#xa;This button will show / hide the stylized scoreboard respectively.  The stylized scoreboard can be dragged to a separate display which is projected to the audience of the match.&#xa;&#xa;      - Maximize / Restore&#xa;&#xa;This button will maximize and restore the dimensions of the stylized scoreboard.&#xa;"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

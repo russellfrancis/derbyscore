@@ -50,12 +50,16 @@ public class ControlWindow extends JFrame implements BoutListener {
 
         public void run() {
         // Setup icons and logos.
-        URL exitIcon = ControlWindow.class.getResource("/gfx/exit.png");
         URL appLogo = ControlWindow.class.getResource("/gfx/brrg.png");
+        URL themeIcon = ControlWindow.class.getResource("/gfx/theme.png");
+        URL exitIcon = ControlWindow.class.getResource("/gfx/exit.png");
+        URL aboutIcon = ControlWindow.class.getResource("/gfx/question.png");
 
         try {
             setIconImage(ImageIO.read(appLogo));
+            loadThemeMenuItem.setIcon(new ImageIcon(ImageIO.read(themeIcon).getScaledInstance(22, 22, Image.SCALE_SMOOTH)));
             quitMenuItem.setIcon(new ImageIcon(ImageIO.read(exitIcon).getScaledInstance(22, 22, Image.SCALE_SMOOTH)));
+            aboutMenuItem.setIcon(new ImageIcon(ImageIO.read(aboutIcon).getScaledInstance(22, 22, Image.SCALE_SMOOTH)));
         }
         catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
@@ -261,12 +265,9 @@ public class ControlWindow extends JFrame implements BoutListener {
             }
         }
     }
-
-    /**
-     * Display the license text for the application in a dialog box.
-     */
-    protected void displayLicense() {
-        final LicenseDialog dialog = new LicenseDialog();
+    
+    protected void displayAboutDialog() {
+        final AboutDialog dialog = new AboutDialog();
         dialog.setVisible(true);
     }
 
@@ -329,7 +330,7 @@ public class ControlWindow extends JFrame implements BoutListener {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         quitMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        licenseMenuItem = new javax.swing.JMenuItem();
+        aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Derby Score");
@@ -472,14 +473,14 @@ public class ControlWindow extends JFrame implements BoutListener {
                             .addComponent(periodTimeLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(commonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jamTimeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                            .addComponent(periodTimeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)))
+                            .addComponent(jamTimeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                            .addComponent(periodTimeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commonPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(periodComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commonPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(messageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)))
+                        .addComponent(messageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         commonPanelLayout.setVerticalGroup(
@@ -642,6 +643,7 @@ public class ControlWindow extends JFrame implements BoutListener {
         fileMenu.setDoubleBuffered(true);
 
         loadThemeMenuItem.setText("Load Theme");
+        loadThemeMenuItem.setToolTipText("Load a theme for the scoreboard from the system.");
         loadThemeMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadThemeMenuItemActionPerformed(evt);
@@ -651,6 +653,7 @@ public class ControlWindow extends JFrame implements BoutListener {
         fileMenu.add(jSeparator1);
 
         quitMenuItem.setText("Quit");
+        quitMenuItem.setToolTipText("Exit the application.");
         quitMenuItem.setDoubleBuffered(true);
         quitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -663,13 +666,14 @@ public class ControlWindow extends JFrame implements BoutListener {
 
         helpMenu.setText("Help");
 
-        licenseMenuItem.setText("License");
-        licenseMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        aboutMenuItem.setText("About");
+        aboutMenuItem.setToolTipText("Information about the application and usage.");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                licenseMenuItemActionPerformed(evt);
+                aboutMenuItemActionPerformed(evt);
             }
         });
-        helpMenu.add(licenseMenuItem);
+        helpMenu.add(aboutMenuItem);
 
         jMenuBar1.add(helpMenu);
 
@@ -722,15 +726,16 @@ public class ControlWindow extends JFrame implements BoutListener {
         loadTheme();
     }//GEN-LAST:event_loadThemeMenuItemActionPerformed
 
-    private void licenseMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenseMenuItemActionPerformed
-        displayLicense();
-    }//GEN-LAST:event_licenseMenuItemActionPerformed
-
     private void fullscreenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullscreenButtonActionPerformed
         fullscreenScoreboard();
     }//GEN-LAST:event_fullscreenButtonActionPerformed
 
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        displayAboutDialog();
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel commonPanel;
     private javax.swing.JButton endJamButton;
     private javax.swing.JMenu fileMenu;
@@ -754,7 +759,6 @@ public class ControlWindow extends JFrame implements BoutListener {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel jamTimeLabel;
     private javax.swing.JTextField jamTimeTextField;
-    private javax.swing.JMenuItem licenseMenuItem;
     private javax.swing.JButton lineupButton;
     private javax.swing.JMenuItem loadThemeMenuItem;
     private javax.swing.JPanel mainPanel;
