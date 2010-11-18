@@ -13,8 +13,7 @@ import javax.swing.JComboBox;
  * A class which listens for user input events on the period combo box.
  *
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: PeriodActionListener.java 11 2010-04-03 03:43:27Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @Immutable
 @ThreadSafe

@@ -12,8 +12,7 @@ import javax.annotation.concurrent.ThreadSafe;
 /**
  * Domain object which represents a team.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: Team.java 5 2010-03-15 03:10:51Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @ThreadSafe
 public class Team implements ReadWriteLock {

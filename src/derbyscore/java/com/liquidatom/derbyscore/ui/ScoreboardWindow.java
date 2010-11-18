@@ -36,8 +36,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ScoreboardWindow.java 4 2010-03-12 11:40:07Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 public class ScoreboardWindow extends JFrame implements BoutListener, ComponentListener {
 

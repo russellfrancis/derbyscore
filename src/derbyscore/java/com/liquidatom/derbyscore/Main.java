@@ -19,8 +19,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: Main.java 11 2010-04-03 03:43:27Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 public class Main implements Runnable {
 

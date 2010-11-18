@@ -9,8 +9,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ClockExecutor.java 4 2010-03-12 11:40:07Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @ThreadSafe
 public class ClockExecutor implements Runnable {

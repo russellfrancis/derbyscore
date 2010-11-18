@@ -12,8 +12,7 @@ import javax.script.ScriptException;
 /**
  * Used to represent a snippet of text which will be conditionally rendered onto the scoreboard.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: TextElement.java 4 2010-03-12 11:40:07Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @ThreadSafe
 @Immutable

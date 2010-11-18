@@ -7,8 +7,7 @@ import javax.annotation.concurrent.ThreadSafe;
  * The global reference to the {@code Theme} currently being used when rendering the scoreboard 
  * can be retrieved from this factory.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ThemeFactory.java 4 2010-03-12 11:40:07Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @ThreadSafe
 public class ThemeFactory {

@@ -24,8 +24,7 @@ import javax.swing.event.ChangeListener;
  * A listener implementation which will listen for changes to a teams state and update some common user-interface
  * elements in conjunction with the event.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ControlWindowTeamListener.java 11 2010-04-03 03:43:27Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @Immutable
 @ThreadSafe

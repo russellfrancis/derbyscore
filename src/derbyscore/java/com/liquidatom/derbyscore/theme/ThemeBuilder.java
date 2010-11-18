@@ -22,8 +22,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ThemeBuilder.java 4 2010-03-12 11:40:07Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @ThreadSafe
 @Immutable
