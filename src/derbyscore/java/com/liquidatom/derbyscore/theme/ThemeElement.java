@@ -11,8 +11,7 @@ import javax.script.ScriptException;
  * An abstract base class for theme elements such as text or images that can conditionally be rendered on the 
  * scoreboard.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ThemeElement.java 9 2010-03-17 02:13:12Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @ThreadSafe
 @Immutable

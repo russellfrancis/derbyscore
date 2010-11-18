@@ -14,8 +14,7 @@ import javax.annotation.concurrent.ThreadSafe;
 /**
  * A domain object which represents a bout between two teams.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: Bout.java 11 2010-04-03 03:43:27Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @ThreadSafe
 public class Bout implements ClockListener, TeamListener, ReadWriteLock {

@@ -8,8 +8,7 @@ import org.picocontainer.behaviors.OptInCaching;
  * A utility for accessing the global pico-container for the application.
  *
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: PicoContainerFactory.java 5 2010-03-15 03:10:51Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 public class PicoContainerFactory {
 

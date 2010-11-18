@@ -2,8 +2,7 @@ package com.liquidatom.derbyscore.domain;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: BoutState.java 11 2010-04-03 03:43:27Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 public enum BoutState {
     UNCONFIGURED,

@@ -14,8 +14,7 @@ import org.slf4j.LoggerFactory;
  * A basic implementation of a clock which keeps track of time as it elapses and provides hooks for listeners to be
  * notified when certain events occur on the clock.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: Clock.java 11 2010-04-03 03:43:27Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @ThreadSafe
 public class Clock implements ReadWriteLock {

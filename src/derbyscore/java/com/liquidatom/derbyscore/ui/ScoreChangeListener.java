@@ -10,8 +10,7 @@ import javax.swing.event.ChangeListener;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ScoreChangeListener.java 11 2010-04-03 03:43:27Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @Immutable
 @ThreadSafe

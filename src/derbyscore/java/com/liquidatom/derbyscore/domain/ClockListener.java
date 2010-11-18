@@ -3,8 +3,7 @@ package com.liquidatom.derbyscore.domain;
 /**
  * Receive notification when events occur on a particular AbstractClock.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ClockListener.java 4 2010-03-12 11:40:07Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 public interface ClockListener {
     public void onChanged(Clock clock);

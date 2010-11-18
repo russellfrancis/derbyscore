@@ -6,8 +6,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: DurationTest.java 10 2010-03-30 02:48:45Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 public class DurationTest {
 

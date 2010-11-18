@@ -26,8 +26,7 @@ import org.picocontainer.MutablePicoContainer;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: Theme.java 9 2010-03-17 02:13:12Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 public class Theme {
 

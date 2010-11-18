@@ -8,8 +8,7 @@ import javax.annotation.concurrent.ThreadSafe;
 /**
  * A basic immutable data structure which holds a scalar and a unit for measuring the duration of time.
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: Duration.java 10 2010-03-30 02:48:45Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 @Immutable
 @ThreadSafe

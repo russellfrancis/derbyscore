@@ -8,8 +8,7 @@ import static org.easymock.classextension.EasyMock.*;
 
 /**
  *
- * @author Russell Francis (russell.francis@gmail.com)
- * @version $Id: ImageElementTest.java 4 2010-03-12 11:40:07Z russ $
+ * @author Russell Francis (russ@metro-six.com)
  */
 public class ImageElementTest {
 
