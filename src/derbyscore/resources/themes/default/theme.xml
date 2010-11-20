@@ -136,7 +136,8 @@
     </image>
     <text x="295" y="845" width="1000" height="95">
         <font color="ef9200" ref="calibrib-font"/>
-        <value>"Find your new nerd hero at"</value>
+        <!--<value>"Find your new nerd hero at"</value>-->
+		<value>"This software solution provided by Metro 6"</value>
         <condition>bout.adDigit == 0</condition>
     </text>
     <text x="295" y="925" width="800" height="120">
